@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Event to handle getting / refreshing personality profile" >
+  <aura:attribute name="isRefresh" type="Boolean"/>
+</aura:event>

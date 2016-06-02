@@ -1,0 +1,20 @@
+<aura:component >
+  <aura:registerEvent name="updateProfileEvent" type="c:UpdatePersonalityInsight"/>
+  
+  <div class="slds-card slds-card--empty">
+    <div class="slds-card__header slds-grid">
+        <div class="slds-media slds-media--center slds-has-flexi-truncate">
+          <div class="slds-media__figure">
+            <img src="/resource/IBMWatson_Logo" class="slds-avatar--small" alt="Powered by IBM Watson" />
+          </div>
+          <div class="slds-media__body">
+            <h2 class="slds-text-heading--small slds-truncate">Personality Insights</h2>
+          </div>
+        </div>
+    </div>
+    <div class="slds-card__body slds-p-horizontal--small">
+      <h4 class="slds-text-heading--small slds-p-top--large slds-p-bottom--large">Get insights into personality based on tweets. Set the Twitter Name and click the button below</h4>
+      <ui:button class="slds-button slds-button--neutral slds-button--small slds-m-bottom--x-large" press="{!c.getPersonalityProfile}" label="Get Insight Now" />
+    </div>
+  </div>
+</aura:component>

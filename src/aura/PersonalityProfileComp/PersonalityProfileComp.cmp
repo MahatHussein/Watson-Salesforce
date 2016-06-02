@@ -1,0 +1,22 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" controller="PersonalityProfileHelper" >
+	<aura:attribute name="personalityProfile" type="Personality_Profile__c"/>
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <ltng:require styles="/resource/slds0121/assets/styles/salesforce-lightning-design-system.min.css"/>
+	<aura:handler name="updateProfileEvent" event="c:UpdatePersonalityInsight" action="{!c.updateProfileEvent}"/>
+
+	<center>
+		<div aura:id="spinner" class="slds-spinner--large slds-show">
+			<img src="/resource/Watson_Spinner" alt="Loading..." />
+		</div>
+	</center>
+	<aura:if isTrue="{!v.personalityProfile == null}">
+			<div aura:id="insightsIntroCard" class="slds-hide">
+				<c:PersonalityInsightsIntro />
+			</div>
+		<aura:set attribute="else">
+			<div aura:id="insightsDataCard" class="slds-hide">
+				<c:PersonalityInsightsData personalityProfile="{!v.personalityProfile}" />
+			</div>
+		</aura:set>
+	</aura:if>
+</aura:component>

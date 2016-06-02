@@ -1,0 +1,75 @@
+<aura:component >
+  <aura:attribute name="personalityProfile" type="Personality_Profile__c"/>
+  <aura:registerEvent name="updateProfileEvent" type="c:UpdatePersonalityInsight"/>
+
+  <div class="slds-card">
+    <div class="slds-card__header slds-grid">
+        <div class="slds-media slds-media--center slds-has-flexi-truncate">
+          <div class="slds-media__figure">
+            <img src="/resource/IBMWatson_Logo" class="slds-avatar--small" alt="Powered by IBM Watson" />
+          </div>
+          <div class="slds-media__body">
+            <h2 class="slds-text-heading--small slds-truncate">Personality Insights</h2>
+          </div>
+        </div>
+        <div class="slds-no-flex">
+          <div class="slds-button-group" role="group">
+            <ui:button class="slds-button slds-button--neutral" press="{!c.getPersonalityProfile}" >
+              <c:svg class="slds-button__icon slds-icon-text-default slds-icon--x-small" svgPath="/resource/slds0121/assets/icons/utility-sprite/svg/symbols.svg#refresh" />
+              <span class="slds-assistive-text">Refresh</span>
+            </ui:button>
+          </div>
+        </div>
+    </div>
+    <div class="slds-card__body">
+      <table class="slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal slds-no-row-hover">
+        <thead>
+          <tr>
+            <th class="slds-text-heading--label slds-size--1-of-2" scope="col">Big 5</th>
+            <th class="slds-text-heading--label slds-size--1-of-2" scope="col">Score (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="slds-hint-parent">
+            <td class="slds-size--1-of-2" data-label="Big 5 Trait">Openness</td>
+            <td class="slds-size--1-of-2" data-label="Score">
+              <ui:outputNumber value="{!v.personalityProfile.Openness__c}" format="00.0"/>
+            </td>
+            </tr>
+            <tr class="slds-hint-parent">
+              <td class="slds-size--1-of-2" data-label="Big 5 Trait">Conscientiousness</td>
+              <td class="slds-size--1-of-2" data-label="Score">
+                <ui:outputNumber value="{!v.personalityProfile.Conscientiousness__c}" format="00.0"/>
+              </td>
+            </tr>
+            <tr class="slds-hint-parent">
+              <td class="slds-size--1-of-2" data-label="Big 5 Trait">Extraversion</td>
+              <td class="slds-size--1-of-2" data-label="Score">
+                <ui:outputNumber value="{!v.personalityProfile.Agreeableness__c}" format="00.0"/>
+              </td>
+            </tr>
+            <tr class="slds-hint-parent">
+              <td class="slds-size--1-of-2" data-label="Big 5 Trait">Agreeableness</td>
+              <td class="slds-size--1-of-2" data-label="Score">
+                <ui:outputNumber value="{!v.personalityProfile.Extraversion__c}" format="00.0"/>
+              </td>
+            </tr>
+            <tr class="slds-hint-parent">
+              <td class="slds-size--1-of-2" data-label="Big 5 Trait">Emotional Range</td>
+              <td class="slds-size--1-of-2" data-label="Score">
+                <ui:outputNumber value="{!v.personalityProfile.Neuroticism__c}" format="00.0"/>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="slds-card__footer">
+        <div class="slds-grid slds-grid--pull-padded">
+          <div class="slds-col--padded">
+            <div class="slds-text-body--small">{!v.personalityProfile.Analysis_Summary__c}</div>
+            <div class="slds-text-body--small">Last updated: <ui:outputDateTime value="{! v.personalityProfile.Last_Updated__c}"/> </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</aura:component>
