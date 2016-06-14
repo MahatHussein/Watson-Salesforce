@@ -1,14 +1,13 @@
 public class PersonalityProfileHelper {
-
+    //MH: use static methods
     @auraEnabled
     public static Personality_Profile__c getPersonalityInsights(String contactId, Boolean isRefresh){
-    	PersonalityProfileHelper pp = new PersonalityProfileHelper();
-      String twitterHandle = pp.getTwitterHandle(contactId);
+      String twitterHandle = PersonalityProfileHelper.getTwitterHandle(contactId);
     	//System.debug('twitterHandle: '+twitterHandle);
     	if(twitterHandle != null){
         Personality_Profile__c personalityProfile;
         try{
-          personalityProfile = pp.getPersonalityProfile(contactId);
+          personalityProfile = PersonalityProfileHelper.getPersonalityProfile(contactId);
         }
         catch(Exception e){
           return null;
@@ -32,7 +31,7 @@ public class PersonalityProfileHelper {
     	}
     }
 
-    public String getTwitterHandle(String contactId){
+    public static String getTwitterHandle(String contactId){
     	if(contactId != null){
     		Contact contact = [Select Id, Twitter_Name__c
                             From Contact
@@ -46,7 +45,7 @@ public class PersonalityProfileHelper {
 
     }
 
-    public Personality_Profile__c getPersonalityProfile(String contactId){
+    public static Personality_Profile__c getPersonalityProfile(String contactId){
     	if(contactId != null){
     		Personality_Profile__c personalityProfile;
     		try{

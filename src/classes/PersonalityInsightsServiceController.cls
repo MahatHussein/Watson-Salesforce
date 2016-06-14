@@ -26,14 +26,6 @@ public with sharing class PersonalityInsightsServiceController {
 
 	private Personality_Profile__c storePersonalityProfile(PersonalityProfileResponse personalityProfile, String contactId){
 
-		Personality_Profile__c exsistingPP;
-
-		try{
-    	exsistingPP = [Select Id From Personality_Profile__c Where Contact__c =: contactId];
-    }catch(Exception e){
-    	exsistingPP = null;
-    }
-
 		Personality_Profile__c pp = new Personality_Profile__c();
 		pp.Source__c = personalityProfile.source;
 		pp.Contact__c = contactId;
@@ -44,6 +36,14 @@ public with sharing class PersonalityInsightsServiceController {
 		pp.Agreeableness__c = personalityProfile.Tree.children[0].children[0].children[3].percentage * 100;
 		pp.Neuroticism__c = personalityProfile.Tree.children[0].children[0].children[4].percentage * 100;
 		pp.Last_Updated__c = datetime.now();
+
+		Personality_Profile__c exsistingPP;
+
+		try{
+    	exsistingPP = [Select Id From Personality_Profile__c Where Contact__c =: contactId Limit 1];
+    }catch(Exception e){
+    	exsistingPP = null;
+    }
 
 		if( exsistingPP != null){
 			pp.Id = exsistingPP.Id;
