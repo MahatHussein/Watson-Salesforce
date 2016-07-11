@@ -28,9 +28,7 @@
 		<name>CustomTab</name>
 	</types>
 	<types>
-		<members>IBMWatson_Logo</members>
-		<members>SLDS0121</members>
-		<members>Watson_Spinner</members>
+		<members>*</members>
 		<name>StaticResource</name>
 	</types>
 	<version>34.0</version>
