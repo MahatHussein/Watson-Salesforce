@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="force-boilerplate" xmlns:sf="antlib:com.salesforce" default="test">
+    <path id="ant.additions.classpath">
+        <fileset dir="./lib/" includes="*.jar"/>
+    </path>
+    <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce" classpathref="ant.additions.classpath"/>
+    <property environment="env"/>
+    <target name="test">
+        <sf:deploy username="${env.username}" password="${env.password}" serverurl="${env.serverurl}"
+            maxPoll="500" pollWaitMillis="5000" deployRoot="../src"
+	    testLevel="RunLocalTests" checkOnly="true" />
+    </target>
+</project>
