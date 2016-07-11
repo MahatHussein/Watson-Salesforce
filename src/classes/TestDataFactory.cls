@@ -36,4 +36,25 @@ public class TestDataFactory {
 
 	}
 
+	public static IBM_Watson_PersonalityInsights__c createIBMWatsonAPISetings(){
+		//IBM API
+		IBM_Watson_PersonalityInsights__c IBMWatsonSettings = new IBM_Watson_PersonalityInsights__c();
+		IBMWatsonSettings.Username__c = '1234567890';
+		IBMWatsonSettings.Password__c = '1234567890';
+		IBMWatsonSettings.Endpoint__c = 'https://gateway.watsonplatform.net/personality-insights/api/v2/profile';
+		return IBMWatsonSettings;
+
+	}
+
+	public static Twitter_API__c createTwitterAPISetings(){
+		//Twitter API
+		Twitter_API__c TwitterAPI = new Twitter_API__c();
+		TwitterAPI.App_Consumer_Key__c = '1234567890';
+		TwitterAPI.App_Consumer_Seceret__c = '1234567890';
+		TwitterAPI.Oath_2_Endpoint__c = 'https://api.twitter.com/oauth2/token';
+		TwitterAPI.User_Timeline_Endpoint__c = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=';
+	 	return TwitterAPI;
+
+	}
+
 }
